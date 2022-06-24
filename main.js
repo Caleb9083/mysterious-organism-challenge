@@ -60,6 +60,28 @@ const pAequorFactory = (specimenNum, dna) => {
   };
 };
 
+// function to create 30 instances of pAquor that
+//can survive in their natural environment
+const generatepAequorArray = () => {
+  const pAequorArray = [];
+  for (let i = 200; i < 230; i++) {
+    let a = pAequorFactory(i, mockUpStrand());
+    if (a.willLikelySurvive()) {
+      pAequorArray.push(a);
+    } else {
+      while (!a.willLikelySurvive()) {
+        a = pAequorFactory(i, mockUpStrand());
+        if (a.willLikelySurvive()) {
+          pAequorArray.push(a);
+          break;
+        }
+      }
+    }
+  }
+  return pAequorArray;
+};
+const the30instances = generatepAequorArray();
+console.log(the30instances);
 // Driver code
 
 const obj1 = pAequorFactory(101, mockUpStrand());
