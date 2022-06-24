@@ -42,6 +42,21 @@ const pAequorFactory = (specimenNum, dna) => {
       let message = `specimen ${this.specimenNum} and specimen ${anotherPAquor.specimenNum} have ${percetage}% DNA in common`;
       console.log(message);
     },
+    //method that returns true if pAequour will survive
+    willLikelySurvive() {
+      let count = 0;
+      for (let i = 0; i < 15; i++) {
+        if (this.dna[i] === "C" || this.dna[i] === "G") {
+          count += 1;
+        }
+      }
+      let rateOfSurvival = Math.round((count / 15) * 100);
+      if (rateOfSurvival >= 60) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   };
 };
 
@@ -55,3 +70,5 @@ const obj2 = pAequorFactory(102, mockUpStrand());
 console.log(obj2);
 
 obj1.compareDna(obj2);
+
+console.log(obj1.willLikelySurvive());
