@@ -19,3 +19,8 @@ const pAequorFactory = (specimenNum, dna) => {
     dna,
   };
 };
+
+// Driver code
+
+const obj1 = pAequorFactory(101, mockUpStrand());
+console.log(obj1);
