@@ -17,6 +17,18 @@ const pAequorFactory = (specimenNum, dna) => {
   return {
     specimenNum,
     dna,
+    //method to return a PAequor DNA mutation
+    mutate() {
+      let selectedBaseIndex = Math.floor(Math.random() * 15);
+      let selectedBase = this.dna[selectedBaseIndex];
+      let bases = ["A", "T", "C", "G"];
+      bases = bases.filter((el) => {
+        return el !== selectedBase;
+      });
+      let newBase = bases[Math.floor(Math.random() * 3)];
+      this.dna[selectedBaseIndex] = newBase;
+      return this.dna;
+    },
   };
 };
 
@@ -24,3 +36,4 @@ const pAequorFactory = (specimenNum, dna) => {
 
 const obj1 = pAequorFactory(101, mockUpStrand());
 console.log(obj1);
+console.log(obj1.mutate());
