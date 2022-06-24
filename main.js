@@ -29,6 +29,19 @@ const pAequorFactory = (specimenNum, dna) => {
       this.dna[selectedBaseIndex] = newBase;
       return this.dna;
     },
+    //method to compare this pAequor to another pAequor
+    compareDna(anotherPAquor) {
+      let anotherDna = anotherPAquor.dna;
+      let count = 0;
+      for (let i = 0; i < 15; i++) {
+        if (this.dna[i] === anotherDna[i]) {
+          count += 1;
+        }
+      }
+      let percetage = Math.round((count / 15) * 100);
+      let message = `specimen ${this.specimenNum} and specimen ${anotherPAquor.specimenNum} have ${percetage}% DNA in common`;
+      console.log(message);
+    },
   };
 };
 
@@ -37,3 +50,8 @@ const pAequorFactory = (specimenNum, dna) => {
 const obj1 = pAequorFactory(101, mockUpStrand());
 console.log(obj1);
 console.log(obj1.mutate());
+
+const obj2 = pAequorFactory(102, mockUpStrand());
+console.log(obj2);
+
+obj1.compareDna(obj2);
